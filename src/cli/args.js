@@ -1,16 +1,20 @@
 const parseArgs = () => {
-  let result = '';
+  /** @type {string[]} */
+  let result = [];
+  let pair = '';
 
   process.argv.slice(2).forEach((arg, index) => {
     if (index % 2 === 0) {
-      const name = arg.indexOf('--') === 0 ? arg.slice(2) : arg;
-      result += `${name} is `;
+      const name = arg.startsWith('--') ? arg.slice(2) : arg;
+      pair += `${name} is `;
     } else {
-      result += arg;
-      console.log(result);
-      result = '';
+      pair += arg;
+      result.push(pair);
+      pair = '';
     }
   });
+
+  console.log(result.join(', '));
 };
 
 parseArgs();

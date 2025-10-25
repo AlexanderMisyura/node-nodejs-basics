@@ -1,8 +1,13 @@
 const variablePrefix = 'RSS_';
 
-const parseEnv = () =>
-  Object.entries(process.env)
+const parseEnv = () => {
+  const result = Object.entries(process.env)
     .filter(([key]) => key.startsWith(variablePrefix))
-    .forEach(([key, value]) => console.log(`${key}=${value}`));
+    .map(([key, value]) => `${key}=${value}`);
+
+  if (result.length) {
+    console.log(result.join('; '));
+  }
+};
 
 parseEnv();
