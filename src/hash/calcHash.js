@@ -14,7 +14,7 @@ const calculateHash = async () => {
   const readStream = fs.createReadStream(filePath);
 
   await stream.pipeline(readStream, fileHash);
-  console.log(fileHash.digest('hex'));
+  console.log(`\x1b[33m${fileHash.digest('hex')}\x1b[0m`);
 };
 
 await calculateHash();

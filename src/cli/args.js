@@ -14,7 +14,7 @@ const parseArgs = () => {
     }
   });
 
-  console.log(result.join(', '));
+  console.log(`\x1b[33m${result.join(', ')}\x1b[0m`);
 };
 
 parseArgs();
