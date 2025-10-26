@@ -6,7 +6,9 @@ const sourceFile = path.join(import.meta.dirname, 'files', 'fileToRead.txt');
 
 const read = async () => {
   const readStream = fs.createReadStream(sourceFile);
-  await stream.pipeline(readStream, process.stdout);
+  await stream.pipeline(readStream, process.stdout, { end: false });
+
+  process.stdout.write('\n');
 };
 
 await read();
